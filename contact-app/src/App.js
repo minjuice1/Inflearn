@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PhoneForm from "./components/PhoneForm";
 
 class App extends Component {
+	// 고유한 값을 위해 id 변수 생성
+	id = 0;
+
 	state = {
 		info: [],
 	};
@@ -15,7 +18,11 @@ class App extends Component {
 		// 비구조할당 문법을 사용하여 코드의 가독성을 높여줌
 		const { info } = this.state;
 		this.setState({
-			info: info.concat(data),
+			info: info.concat({
+				// 기존의 데이터에 id만 1씩 늘리기
+				...data,
+				id: this.id++,
+			}),
 		});
 	};
 
