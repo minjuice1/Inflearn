@@ -30,6 +30,12 @@ class PhoneForm extends Component {
 		// 	phone: this.state.phone,
 		// });
 		this.props.onCreate(this.state);
+
+		// 등록 후, name과 phone의 값을 초기화.
+		this.setState({
+			name: "",
+			phone: "",
+		});
 	};
 
 	render() {
@@ -48,9 +54,6 @@ class PhoneForm extends Component {
 					value={this.state.phone}
 				/>
 				<button type="submit">등록하기</button>
-				<div>
-					{this.state.name} {this.state.phone}
-				</div>
 			</form>
 		);
 	}
