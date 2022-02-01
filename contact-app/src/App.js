@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PhoneForm from "./components/PhoneForm";
+import PhoneInfoList from "./components/PhoneInfoList";
 
 class App extends Component {
 	// 고유한 값을 위해 id 변수 생성
@@ -30,8 +31,7 @@ class App extends Component {
 		return (
 			<div>
 				<PhoneForm onCreate={this.handleCreate} />
-				{/* 객체화하여 값이 잘 들어가고 있는지 확인 */}
-				{JSON.stringify(this.state.info)}
+				<PhoneInfoList data={this.state.info} />
 			</div>
 		);
 	}
