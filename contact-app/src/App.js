@@ -4,10 +4,26 @@ import PhoneInfoList from "./components/PhoneInfoList";
 
 class App extends Component {
 	// 고유한 값을 위해 id 변수 생성
-	id = 0;
+	id = 3;
 
 	state = {
-		info: [],
+		info: [
+			{
+				id: 0,
+				name: "가가가",
+				phone: "000 - 000 - 0000",
+			},
+			{
+				id: 1,
+				name: "나나나",
+				phone: "111 - 111 - 1111",
+			},
+			{
+				id: 2,
+				name: "다다다",
+				phone: "222 - 222 - 2222",
+			},
+		],
 	};
 	// react는 항상 불변성을 유지해주어야 하기 때문에,
 	// 어떠한 값을 수정하려면 언제나 setState를 사용해주어야 하며,

@@ -7,6 +7,14 @@ class PhoneInfo extends Component {
 		phone: "",
 	};
 
+	// 업데이트 되는 데이터만 렌더링 되도록
+	shouldComponentUpdate(nextProps, nextState) {
+		if (this.state !== nextState) {
+			return true;
+		}
+		return this.props.info !== nextProps.info;
+	}
+
 	handleRemove = () => {
 		const { info, onRemove } = this.props;
 		onRemove(info.id);
@@ -41,7 +49,7 @@ class PhoneInfo extends Component {
 	render() {
 		const { name, phone } = this.props.info;
 		const { editing } = this.state;
-
+		console.log(name);
 		return (
 			<div>
 				{editing ? (
