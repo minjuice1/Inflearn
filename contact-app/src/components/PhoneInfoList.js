@@ -7,12 +7,14 @@ class PhoneInfoList extends Component {
 	};
 
 	render() {
-		const { data } = this.props;
+		const { data, onRemove } = this.props;
 
 		// data가 없을 경우 null을 return, 그렇지 않으면 error
 		// TypeError: Cannot read properties of undefined (reading 'map')
 		if (!data) return null;
-		const list = data.map((info) => <PhoneInfo info={info} key={info.id} />);
+		const list = data.map((info) => (
+			<PhoneInfo onRemove={onRemove} info={info} key={info.id} />
+		));
 		return <div>{list}</div>;
 	}
 }

@@ -27,11 +27,18 @@ class App extends Component {
 		});
 	};
 
+	handleRemove = (id) => {
+		const { info } = this.state;
+		this.setState({
+			info: info.filter((info) => info.id !== id),
+		});
+	};
+
 	render() {
 		return (
 			<div>
 				<PhoneForm onCreate={this.handleCreate} />
-				<PhoneInfoList data={this.state.info} />
+				<PhoneInfoList onRemove={this.handleRemove} data={this.state.info} />
 			</div>
 		);
 	}
