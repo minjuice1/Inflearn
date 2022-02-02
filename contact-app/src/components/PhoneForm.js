@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 
 class PhoneForm extends Component {
+	// ref를 사용할 때는 focus를 주거나, 특정 dom의 크기를 가져야 한다거나,
+	// 특정 dom의 스크롤 위치, 스크롤 크기 설정할 때!
+	// Dom에 직접적으로 접근해야 할 때 사용함.
+	// 여기선, 제출 후 이름의 input으로 focus를 하기위해 Dom에 직접 접근
+	input = React.createRef();
+
 	state = {
 		name: "",
 		phone: "",
 	};
-	d;
 
 	// onchange로 state 값을 전달해줄때, input이 여러개라서 value로 받아지는 데이터가 겹친다면
 	// this.setState 안에 원래는 객체 형식으로
@@ -36,6 +41,10 @@ class PhoneForm extends Component {
 			name: "",
 			phone: "",
 		});
+
+		// 제출 후 이름의 input으로 focus를 하기위해 Dom에 직접 접근
+		// this.input.focus();
+		this.input.current.focus();
 	};
 
 	render() {
@@ -46,6 +55,9 @@ class PhoneForm extends Component {
 					placeholder="name"
 					onChange={this.ChangeHandler}
 					value={this.state.name}
+					// 제출 후 이름의 input으로 focus를 하기위해 Dom에 직접 접근
+					// ref={(ref) => (this.input = ref)}
+					ref={this.input}
 				/>
 				<input
 					name="phone"
