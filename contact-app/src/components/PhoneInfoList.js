@@ -20,7 +20,6 @@ class PhoneInfoList extends Component {
 				key={info.id}
 			/>
 		));
-		console.log("rendering list");
 		return <div>{list}</div>;
 	}
 }

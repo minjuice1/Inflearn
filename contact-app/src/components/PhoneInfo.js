@@ -49,7 +49,6 @@ class PhoneInfo extends Component {
 	render() {
 		const { name, phone } = this.props.info;
 		const { editing } = this.state;
-		console.log(name);
 		return (
 			<div>
 				{editing ? (

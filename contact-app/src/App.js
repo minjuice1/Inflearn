@@ -24,6 +24,7 @@ class App extends Component {
 				phone: "222 - 222 - 2222",
 			},
 		],
+		keyword: "",
 	};
 	// react는 항상 불변성을 유지해주어야 하기 때문에,
 	// 어떠한 값을 수정하려면 언제나 setState를 사용해주어야 하며,
@@ -65,14 +66,30 @@ class App extends Component {
 		});
 	};
 
+	handleChangeKeyword = (e) => {
+		this.setState({
+			keyword: e.target.value,
+		});
+	};
+
 	render() {
 		return (
 			<div>
 				<PhoneForm onCreate={this.handleCreate} />
+				<input
+					value={this.state.keyword}
+					onChange={this.handleChangeKeyword}
+					placeholder="검색 할 이름 입력해주세요"
+				/>
+				{/* indexOf함수가 index를 찾는 함수인데요. 없으면 -1를 리턴
+        만약에 검색창에 '가'를 검색한다면, 가가가에서 가가 존재하기 때문에
+        index는 0이 반환되고, 가가가의 info정보가 data에 추가 된다. */}
 				<PhoneInfoList
+					data={this.state.info.filter(
+						(info) => info.name.indexOf(this.state.keyword) > -1,
+					)}
 					onUpdate={this.handleUpdate}
 					onRemove={this.handleRemove}
-					data={this.state.info}
 				/>
 			</div>
 		);
